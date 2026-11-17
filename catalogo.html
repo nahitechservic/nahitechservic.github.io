@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<title>Catálogo de servicios · NahiTech Service</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@1,800&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  --bg:#0b0618; --card:#1a0f33; --line:#3b2570; --ink:#ffffff; --muted:#cdbff0;
+  --violet:#a56bff; --price:#6d28d9; --btn:#25d366; --btn-ink:#06240f;
+  --head:'Barlow Condensed','Arial Narrow',sans-serif;
+  --body:'Barlow',system-ui,sans-serif;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.05rem/1.55 var(--body)}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--violet);outline-offset:3px}
+.wrap{max-width:960px;margin:0 auto;padding:0 20px}
+
+header{padding:28px 0 8px}
+.mark{display:inline-block;text-decoration:none}
+.mark b{display:block;font:italic 800 2.4rem/1 var(--head);color:var(--ink)}
+.mark b span{color:var(--violet)}
+.mark small{display:block;font:600 .75rem var(--body);letter-spacing:.5em;color:var(--muted);margin-top:4px}
+
+.intro{padding:36px 0 28px}
+h1{margin:0;font:italic 800 clamp(2.6rem,10vw,4.6rem)/.95 var(--head)}
+h1 span{color:var(--violet)}
+.intro p{margin:14px 0 0;color:var(--muted);max-width:52ch}
+
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));padding:0;margin:0;list-style:none}
+.item{background:var(--card);border:2px solid var(--line);border-radius:22px;padding:22px;display:flex;flex-direction:column;gap:12px}
+.ico{width:52px;height:52px;border-radius:14px;background:var(--price);display:grid;place-items:center}
+.ico svg{width:28px;height:28px;stroke:#fff;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.item h2{margin:0;font:italic 800 1.7rem/1.05 var(--head);text-transform:uppercase}
+.item p{margin:0;color:var(--muted);font-size:1rem;flex:1}
+.price{align-self:flex-start;background:#fff;border-radius:14px;padding:8px 20px;text-align:center;color:#1a1033}
+.price strong{display:block;font:italic 800 2rem/1 var(--head);color:var(--price)}
+.price small{display:block;font:700 .7rem var(--body);letter-spacing:.08em}
+
+.cta{margin:36px 0 12px;background:var(--card);border:2px solid var(--line);border-radius:22px;padding:24px;display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between}
+.cta h3{margin:0;font:italic 800 1.8rem/1.05 var(--head)}
+.cta p{margin:4px 0 0;color:var(--muted)}
+.btn{display:inline-block;background:var(--btn);color:var(--btn-ink);font:700 1rem var(--body);padding:14px 24px;border-radius:14px;text-decoration:none}
+.btn:hover{filter:brightness(1.08)}
+.btn.alt{background:transparent;color:var(--ink);border:2px solid var(--violet)}
+.btns{display:flex;flex-wrap:wrap;gap:10px}
+
+footer{padding:24px 0 36px;color:var(--muted);font-size:.95rem;display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between}
+</style>
+</head>
+<body>
+
+<header><div class="wrap">
+  <a class="mark" href="https://nahitechservic.github.io/" aria-label="NahiTech Service, ir al inicio"><b><span>Nahi</span>Tech</b><small>SERVICE</small></a>
+</div></header>
+
+<main class="wrap">
+  <section class="intro">
+    <h1>Catálogo de <span>servicios</span></h1>
+    <p>Precios en pesos argentinos. Son valores “desde”: el costo final depende del equipo y lo confirmamos antes de empezar.</p>
+  </section>
+
+  <ul class="grid" id="catalogo"></ul>
+
+  <section class="cta">
+    <div>
+      <h3>¿Te interesa alguno?</h3>
+      <p>Escribinos y te respondemos por WhatsApp.</p>
+    </div>
+    <div class="btns">
+      <a class="btn" id="wa" href="#" target="_blank" rel="noopener">Consultar por WhatsApp</a>
+      <a class="btn alt" href="https://nahitechservic.github.io/#pedir">Pedir un servicio</a>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap">
+  <span>Formosa, Argentina</span>
+  <span>WhatsApp 370 524-5644</span>
+  <a href="https://instagram.com/nahitechservic" target="_blank" rel="noopener">@nahitechservic</a>
+</footer>
+
+<script>
+/* ===== EDITÁ SOLO ESTA PARTE ===== */
+const WHATSAPP = "5493705245644";
+const SERVICIOS = [
+  {icono:"buscar", nombre:"Revisión y diagnóstico", texto:"Detectamos el problema y te damos la solución.", precio:14000},
+  {icono:"ventilador", nombre:"Limpieza básica", texto:"Limpieza interna y externa + cambio de pasta térmica.", precio:25000},
+  {icono:"candado", nombre:"Desbloqueo de computadoras", texto:"Eliminación de contraseñas y accesos bloqueados.", precio:20000},
+  {icono:"wifi", nombre:"Configuración de router", texto:"WiFi estable, claves seguras y mejor cobertura.", precio:22000},
+  {icono:"globo", nombre:"Creación de páginas web", texto:"Servicio completo para tu negocio.", precio:40000},
+  {icono:"monitor", nombre:"Reparación y otros trabajos", texto:"Virus, instalación de programas y equipos que no funcionan. Se cotiza tras el diagnóstico.", precio:null}
+];
+/* ================================= */
+
+const ICONOS = {
+  buscar:'<circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5"/>',
+  ventilador:'<circle cx="12" cy="12" r="9"/><path d="M12 12c0-4 2-6 4-6M12 12c-4 0-6 2-6 4M12 12c0 4-2 6-4 6"/>',
+  candado:'<rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 018 0v3"/>',
+  wifi:'<path d="M2 9a15 15 0 0120 0M5 12.5a10 10 0 0114 0M8.5 16a5 5 0 017 0"/><circle cx="12" cy="19.5" r="1"/>',
+  globo:'<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/>',
+  monitor:'<rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/>'
+};
+const lista = document.getElementById("catalogo");
+SERVICIOS.forEach(s => {
+  const precio = s.precio
+    ? `<div class="price"><strong>$${s.precio.toLocaleString("es-AR")}</strong><small>DESDE</small></div>`
+    : `<div class="price"><strong>A cotizar</strong><small>SEGÚN EL CASO</small></div>`;
+  lista.insertAdjacentHTML("beforeend",
+    `<li class="item"><div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true">${ICONOS[s.icono]}</svg></div><h2>${s.nombre}</h2><p>${s.texto}</p>${precio}</li>`);
+});
+document.getElementById("wa").href = "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent("Hola, vi el catálogo de NahiTech Service y quiero consultar.");
+</script>
+</body>
+</html>
